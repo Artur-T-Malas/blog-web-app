@@ -11,16 +11,39 @@
     <h1>Welcome to COBWA (Completely Original Blogging Web App)</h1>
     <% if (locals.blogPosts && locals.blogPosts.length > 0) { %>
         <% for (let i=0; i<blogPosts.length; i++) { %>
-            <div class="blog-post" id="<%= i %>">
-                <p class="post-id"><%= i %></p>
-                <p class="content"><%= blogPosts[i].content %></p>
-                <p class="author"><%= blogPosts[i].author %></p>
-                <!-- workaround for not being able to use DELETE method yet -->
-                <form action="/posts/delete" method="POST">
-                    <input type="hidden" value="<%= i %>" name="post-id">
-                    <input type="submit" value="Delete">
-                </form>
-            </div>
+            <!-- If a post is to be edited, change it into a form -->
+            <% if (locals.editPost && i === locals.editPostId) { %>
+                <div class="blog-post-edit" id="<%= i %>">
+                    <form action="/posts/update" method="POST">
+                        <input type="hidden" value="<%= i %>" name="postId">
+                        <label for="author">Author</label>
+                        <input type="text" name="author" value="<%= blogPosts[i].author %>" required>
+                        <label for="content">Edit your post</label>
+                        <textarea name="content" required><%= blogPosts[i].content %></textarea>
+                        <input type="submit" value="Update">
+                    </form>
+                    <form action="/posts/update/cancel" method="POST">
+                        <input type="hidden" name="cancel" value="1">
+                        <input type="submit" value="Cancel">
+                    </form>
+                </div>
+            <!-- Otherwise display it normally -->
+            <% } else { %>
+                <div class="blog-post" id="<%= i %>">
+                    <p class="post-id"><%= i %></p>
+                    <p class="content"><%= blogPosts[i].content %></p>
+                    <p class="author"><%= blogPosts[i].author %></p>
+                    <!-- workarounds for not being able to use PUT or DELETE method yet -->
+                    <form action="/posts/edit" method="POST">
+                        <input type="hidden" value="<%= i %>" name="postId">
+                        <input type="submit" value="Edit">
+                    </form>
+                    <form action="/posts/delete" method="POST">
+                        <input type="hidden" value="<%= i %>" name="postId">
+                        <input type="submit" value="Delete">
+                    </form>
+                </div>
+            <% } %>
         <% } %>
     <% } %>
     <form action="/posts" method="POST">
@@ -30,8 +53,5 @@
         <textarea name="content" required></textarea>
         <input type="submit" value="Post">
     </form>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="index.js" charset="utf-8"></script>
 </body>
 </html>

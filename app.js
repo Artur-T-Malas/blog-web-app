@@ -11,6 +11,8 @@ Example userPost object:
 }
 */
 var userPosts = [];
+var editPost = false;
+var editPostId = 0;
 
 app.use(express.urlencoded( { extended: true }));
 app.use(express.static("public"));
@@ -19,13 +21,12 @@ app.get("/", (req, res) => {
     res.render(
         "index.ejs",
         {
-            blogPosts: userPosts
+            blogPosts: userPosts,
         }
     );
 });
 
 app.post("/posts", (req, res) => {
-    console.log(req.body);
     userPosts.push({
         author: req.body.author,
         content: req.body.content
@@ -33,14 +34,41 @@ app.post("/posts", (req, res) => {
     res.redirect("/");
 });
 
-// Workaround for not being able to use DELETE method yet
-app.post("/posts/delete", (req, res) => {
-    console.log(req.body);
-    let postIdToDelete = Number(req.body['post-id']);
-    userPosts.splice(postIdToDelete, 1);
+// Workarounds below for not being able to use PUT or DELETE method yet
+app.post("/posts/edit", (req, res) => {
+    editPost = true;
+    editPostId = Number(req.body['postId']);
+    res.render(
+        "index.ejs",
+        {
+            blogPosts: userPosts,
+            editPost: editPost,
+            editPostId: editPostId
+        }
+    );
+});
+
+app.post("/posts/update", (req, res) => {
+    userPosts[Number(req.body['postId'])] = {
+        author: req.body.author,
+        content: req.body.content
+    };
+    editPost = false;
     res.redirect("/");
 });
 
+app.post("/posts/update/cancel", (req, res) => {
+    console.log(req.body);
+    editPost = false;
+    editPostId = null;
+    res.redirect("/");
+});
+
+app.post("/posts/delete", (req, res) => {
+    let postIdToDelete = Number(req.body['postId']);
+    userPosts.splice(postIdToDelete, 1);
+    res.redirect("/");
+});
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
