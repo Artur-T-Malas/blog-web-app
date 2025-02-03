@@ -58,7 +58,6 @@ app.post("/posts/update", (req, res) => {
 });
 
 app.post("/posts/update/cancel", (req, res) => {
-    console.log(req.body);
     editPost = false;
     editPostId = null;
     res.redirect("/");

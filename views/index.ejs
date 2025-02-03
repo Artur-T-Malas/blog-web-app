@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include("partials/header.ejs") %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport", content="width=device-width, initial-scale=1.0">
-    <title>Completely Original Blogging Web App</title>
-</head>
-
-<body>
-    <h1>Welcome to COBWA (Completely Original Blogging Web App)</h1>
     <% if (locals.blogPosts && locals.blogPosts.length > 0) { %>
         <% for (let i=0; i<blogPosts.length; i++) { %>
             <!-- If a post is to be edited, change it into a form -->
@@ -54,4 +45,5 @@
         <input type="submit" value="Post">
     </form>
 </body>
-</html>
+
+<%- include("partials/footer.ejs") %>
