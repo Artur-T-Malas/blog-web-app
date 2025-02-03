@@ -33,6 +33,14 @@ app.post("/posts", (req, res) => {
     res.redirect("/");
 });
 
+// Workaround for not being able to use DELETE method yet
+app.post("/posts/delete", (req, res) => {
+    console.log(req.body);
+    let postIdToDelete = Number(req.body['post-id']);
+    userPosts.splice(postIdToDelete, 1);
+    res.redirect("/");
+});
+
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);

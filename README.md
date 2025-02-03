@@ -2,7 +2,7 @@
 This repository holds **my** solution for a **Capstone Project** from dr. Angela Yu's [*The Complete Full-Stack Web Development Bootcamp*](https://www.udemy.com/course/the-complete-web-development-bootcamp/)
 
 ## TODO
-[ ] - Make the "Delete" button actually remove blog posts
+[ ] - Allow to edit posts
 [ ] - Add styling
 [ ] - And more...
 

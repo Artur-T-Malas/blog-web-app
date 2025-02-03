@@ -10,13 +10,18 @@
 <body>
     <h1>Welcome to COBWA (Completely Original Blogging Web App)</h1>
     <% if (locals.blogPosts && locals.blogPosts.length > 0) { %>
-        <% blogPosts.forEach(blogPost => { %>
-            <div class="blog-post">
-                <p class="content"><%= blogPost.content %></p>
-                <p class="author"><%= blogPost.author %></p>
-                <button type="submit">Delete post</button>
+        <% for (let i=0; i<blogPosts.length; i++) { %>
+            <div class="blog-post" id="<%= i %>">
+                <p class="post-id"><%= i %></p>
+                <p class="content"><%= blogPosts[i].content %></p>
+                <p class="author"><%= blogPosts[i].author %></p>
+                <!-- workaround for not being able to use DELETE method yet -->
+                <form action="/posts/delete" method="POST">
+                    <input type="hidden" value="<%= i %>" name="post-id">
+                    <input type="submit" value="Delete">
+                </form>
             </div>
-        <% }); %>
+        <% } %>
     <% } %>
     <form action="/posts" method="POST">
         <label for="author">Your Name:</label>
@@ -25,5 +30,8 @@
         <textarea name="content" required></textarea>
         <input type="submit" value="Post">
     </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="index.js" charset="utf-8"></script>
 </body>
 </html>
