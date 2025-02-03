@@ -1,10 +1,10 @@
 <%- include("partials/header.ejs") %>
-
+<div class="flex-container">
     <% if (locals.blogPosts && locals.blogPosts.length > 0) { %>
         <% for (let i=0; i<blogPosts.length; i++) { %>
             <!-- If a post is to be edited, change it into a form -->
             <% if (locals.editPost && i === locals.editPostId) { %>
-                <div class="blog-post-edit" id="<%= i %>">
+                <div class="blog-post-edit">
                     <form action="/posts/update" method="POST">
                         <input type="hidden" value="<%= i %>" name="postId">
                         <label for="author">Author</label>
@@ -20,23 +20,29 @@
                 </div>
             <!-- Otherwise display it normally -->
             <% } else { %>
-                <div class="blog-post" id="<%= i %>">
-                    <p class="post-id"><%= i %></p>
+                <div class="blog-post">
+                    <div class="blog-post-top-row">
+                        <p class="post-id"><%= i %></p>
+                        <p class="author"><%= blogPosts[i].author %></p>
+                        <!-- workarounds for not being able to use PUT or DELETE method yet -->
+                         <div class="top-row-buttons">
+                             <form action="/posts/edit" method="POST">
+                                 <input type="hidden" value="<%= i %>" name="postId">
+                                 <input type="submit" value="Edit">
+                                </form>
+                                <form action="/posts/delete" method="POST">
+                                    <input type="hidden" value="<%= i %>" name="postId">
+                                    <input type="submit" class="delete-button" value="Delete">
+                                </form>
+                            </div>
+                    </div>
                     <p class="content"><%= blogPosts[i].content %></p>
-                    <p class="author"><%= blogPosts[i].author %></p>
-                    <!-- workarounds for not being able to use PUT or DELETE method yet -->
-                    <form action="/posts/edit" method="POST">
-                        <input type="hidden" value="<%= i %>" name="postId">
-                        <input type="submit" value="Edit">
-                    </form>
-                    <form action="/posts/delete" method="POST">
-                        <input type="hidden" value="<%= i %>" name="postId">
-                        <input type="submit" value="Delete">
-                    </form>
                 </div>
             <% } %>
         <% } %>
     <% } %>
+</div>
+<div class="new-post-creation">
     <form action="/posts" method="POST">
         <label for="author">Your Name:</label>
         <input type="text" name="author" required>
@@ -44,6 +50,7 @@
         <textarea name="content" required></textarea>
         <input type="submit" value="Post">
     </form>
+</div>
 </body>
 
 <%- include("partials/footer.ejs") %>

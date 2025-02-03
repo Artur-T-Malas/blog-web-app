@@ -10,7 +10,10 @@ Example userPost object:
     content: "Batch File Renamer is a great tool to quickly rename a lot of files with a common name!"
 }
 */
-var userPosts = [];
+var userPosts = [{
+    author: "Artur",
+    content: "Batch File Renamer is a great tool to quickly rename a lot of files with a common name!"
+}];
 var editPost = false;
 var editPostId = 0;
 

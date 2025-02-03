@@ -2,9 +2,11 @@
 This repository holds **my** solution for a **Capstone Project** from dr. Angela Yu's [*The Complete Full-Stack Web Development Bootcamp*](https://www.udemy.com/course/the-complete-web-development-bootcamp/)
 
 ## TODO
-[ ] - Allow to edit posts
-[ ] - Add styling
-[ ] - And more...
+- Fix and finish styling
+    - Make header always stay at the top of the screen
+    - Make footer always stay at the bottom of the screen
+- Add links to footer (Github, LinkedIn, etc.)
+- And more...
 
 ## Project description from the course
 
