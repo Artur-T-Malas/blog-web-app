@@ -6,16 +6,22 @@
             <% if (locals.editPost && i === locals.editPostId) { %>
                 <div class="blog-post-edit">
                     <form action="/posts/update" method="POST">
-                        <input type="hidden" value="<%= i %>" name="postId">
-                        <label for="author">Author</label>
-                        <input type="text" name="author" value="<%= blogPosts[i].author %>" required>
                         <label for="content">Edit your post</label>
                         <textarea name="content" required><%= blogPosts[i].content %></textarea>
-                        <input type="submit" value="Update">
-                    </form>
-                    <form action="/posts/update/cancel" method="POST">
-                        <input type="hidden" name="cancel" value="1">
-                        <input type="submit" value="Cancel">
+                        <input type="hidden" value="<%= i %>" name="postId">
+                        <div class="edit-post-bottom-row">
+                            <div class="author-field">
+                                <label for="author">Author</label>
+                                <input type="text" name="author" value="<%= blogPosts[i].author %>" required>
+                            </div>
+                            <div class="bottom-row-buttons">
+                                <input type="submit" value="Update">
+                                <form action="/posts/update/cancsel" method="POST">
+                                    <input type="hidden" name="cancel" value="1">
+                                    <input type="submit" value="Cancel">
+                                </form>
+                            </div>
+                        </div>
                     </form>
                 </div>
             <!-- Otherwise display it normally -->
@@ -42,13 +48,17 @@
         <% } %>
     <% } %>
 </div>
-<div class="new-post-creation">
+<div class="blog-post-creation">
     <form action="/posts" method="POST">
-        <label for="author">Your Name:</label>
-        <input type="text" name="author" required>
         <label for="content">What do you want to write about?</label>
         <textarea name="content" required></textarea>
-        <input type="submit" value="Post">
+        <div class="create-post-bottom-row">
+            <div class="author-field">
+                <label for="author">Your Name:</label>
+                <input type="text" name="author" required>
+            </div>
+            <input type="submit" value="Post">
+        </div>
     </form>
 </div>
 </body>
