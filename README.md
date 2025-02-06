@@ -3,8 +3,6 @@ This repository holds **my** solution for a **Capstone Project** from dr. Angela
 
 ## TODO
 - Fix and finish styling
-    - Make header always stay at the top of the screen
-    - Make footer always stay at the bottom of the screen
 - Add links to footer (Github, LinkedIn, etc.)
 - And more...
 
