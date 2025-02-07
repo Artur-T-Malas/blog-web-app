@@ -60,7 +60,10 @@ footer {
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: flex-start;
+    flex-grow: 1;
     width: 33vw;
+    min-width: 400px;
+    max-width: 600px;
 
     padding: 2vw;
     border-radius: 2vw;
@@ -113,14 +116,4 @@ textarea {
 
 .delete-button {
     color: red !important;
-}
-
-@media (max-width: 1200px) {
-    .blog-post-creation {
-        width: 80vw;
-    }
-
-    .flex-container {
-        flex-wrap: nowrap;
-    }
 }
