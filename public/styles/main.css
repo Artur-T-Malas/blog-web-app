@@ -21,13 +21,15 @@ body {
 
 nav {
     grid-area: navbar;
+    height: 3rem;
+    top: 0;
+    position: sticky;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #64CCC5;
     color: #053B50;
     font-weight: bold;
-    max-height: 10vh;
 }
 
 main {
@@ -40,6 +42,9 @@ main {
 }
 
 aside {
+    height: calc(100vh - 3rem);
+    top: 3rem;
+    position: sticky;
     grid-area: sidebar;
 }
 
