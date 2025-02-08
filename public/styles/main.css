@@ -42,10 +42,13 @@ main {
 }
 
 aside {
-    height: calc(100vh - 3rem);
+    grid-area: sidebar;
+    height: calc(100vh - 5rem);
     top: 3rem;
     position: sticky;
-    grid-area: sidebar;
+    background-color: #053B50;
+    border-radius: 1rem;
+    margin: 1rem;
 }
 
 footer {
@@ -133,4 +136,25 @@ textarea {
 
 .delete-button {
     color: red !important;
+}
+
+@media(max-width: 800px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "navbar"
+            "main"
+            "blog-post-creation"
+            "footer";
+    }
+
+    aside {
+        position: fixed;
+        width: 300px;
+        display: none;
+    }
+
+    .show {
+        display: block;
+    }
 }
