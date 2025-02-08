@@ -1,5 +1,6 @@
 <%- include("partials/header.ejs") %>
-<div id="whole-page">
+<%- include("partials/sidebar.ejs") %>
+<main>
     <div class="flex-container">
         <% if (locals.blogPosts && locals.blogPosts.length > 0) { %>
             <% for (let i=0; i<blogPosts.length; i++) { %>
@@ -62,7 +63,7 @@
             </div>
         </form>
     </div>
-</div>
+</main>
 </body>
 
 <%- include("partials/footer.ejs") %>
