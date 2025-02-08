@@ -21,8 +21,8 @@ body {
 
 nav {
     grid-area: navbar;
-    height: 3rem;
     top: 0;
+    padding: 0.5rem;
     position: sticky;
     display: flex;
     justify-content: center;
@@ -68,8 +68,12 @@ p {
     margin: 1em;
 }
 
-h1, h2, h3 {
-    margin: 1em;
+h1 {
+    margin: 0.5rem;
+}
+
+h2, h3 {
+    margin: 1rem;
 }
 
 .blog-post, .blog-post-edit, .blog-post-creation {
@@ -118,14 +122,17 @@ h1, h2, h3 {
     align-items: center;
 }
 
-input[type=submit], input[type=button] {
+input[type=submit], input[type=button], button {
     background-color: #EEEEEE;
     color: #053B50;
     padding: 0.5vw;
-    border-radius: 0.5vw;
-    width: 5vw;
+    border-radius: 0.5rem;
     min-width: 60px;
     font-weight: bold;
+}
+
+nav > button {
+    display: none;
 }
 
 textarea {
@@ -148,10 +155,18 @@ textarea {
             "footer";
     }
 
+    nav > button {
+        display: inline-block;
+    }
+
     aside {
         position: fixed;
         width: 300px;
         display: none;
+    }
+
+    #sidebar {
+        border: solid 3px #64CCC5;
     }
 
     .show {
