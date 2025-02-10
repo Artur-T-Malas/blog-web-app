@@ -170,6 +170,10 @@ a.social-media-link span, a.social-media-link svg {
     vertical-align: middle;
 }
 
+.social-media-link svg path{
+    fill: #053B50;
+}
+
 @media(max-width: 800px) {
     body {
         grid-template-columns: 1fr;
@@ -196,5 +200,9 @@ a.social-media-link span, a.social-media-link svg {
 
     .show {
         display: block;
+    }
+
+    .social-media-link span {
+        display: none;
     }
 }
