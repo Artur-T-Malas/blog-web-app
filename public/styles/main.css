@@ -49,6 +49,8 @@ aside {
     background-color: #053B50;
     border-radius: 1rem;
     margin: .5rem;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 footer {
@@ -186,12 +188,16 @@ a.social-media-link span, a.social-media-link svg {
 
     nav > button {
         display: inline-block;
+        svg path{
+            fill: #053B50;
+        }
     }
 
     aside {
         position: fixed;
         width: 300px;
         display: none;
+        height: auto;
     }
 
     #sidebar {
