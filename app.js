@@ -3,6 +3,16 @@ import express from "express";
 const port = 3000;
 const app = express();
 
+const authorPattern = new RegExp("^[a-zA-Z0-9#\\$%\\&\\-_]+$")
+
+function validateAuthor(author) {
+    let isValid = false;
+    if (authorPattern.test(author) & author.length <= 20) {
+        isValid = true;
+    }
+    return isValid;
+}
+
 /*
 Example userPost object:
 {
@@ -30,11 +40,19 @@ app.get("/", (req, res) => {
 });
 
 app.post("/posts", (req, res) => {
-    userPosts.push({
-        author: req.body.author,
-        content: req.body.content
-    });
-    res.redirect("/");
+    let authorValid = validateAuthor(req.body.author);
+    if (authorValid) {
+        userPosts.push({
+            author: req.body.author,
+            content: req.body.content
+        });
+        res.redirect("/");
+    } else {
+        res.render(
+            "error.ejs",
+            { errorMessage: "Invalid input" }
+        );
+    }
 });
 
 // Workarounds below for not being able to use PUT or DELETE method yet
@@ -52,12 +70,20 @@ app.post("/posts/edit", (req, res) => {
 });
 
 app.post("/posts/update", (req, res) => {
-    userPosts[Number(req.body['postId'])] = {
-        author: req.body.author,
-        content: req.body.content
-    };
-    editPost = false;
-    res.redirect("/");
+    let authorValid = validateAuthor(req.body.author);
+    if (authorValid) {
+        userPosts[Number(req.body['postId'])] = {
+            author: req.body.author,
+            content: req.body.content
+        };
+        editPost = false;
+        res.redirect("/");
+    } else {
+        res.render(
+            "error.ejs",
+            { errorMessage: "Invalid input" }
+        );
+    }
 });
 
 app.post("/posts/update/cancel", (req, res) => {

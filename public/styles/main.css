@@ -72,7 +72,7 @@ form {
 }
 
 p {
-    margin: 1em;
+    margin: 1rem;
 }
 
 h1 {
@@ -174,6 +174,52 @@ a.social-media-link span, a.social-media-link svg {
 
 .social-media-link svg path{
     fill: #053B50;
+}
+
+.error-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33vw;
+
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: .5rem;
+    background-color: #053B50;
+
+    svg {
+        height: 70px;
+        width: 70px;
+    }
+
+    p {
+        margin: 0.5rem;
+    }
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    width: 150px;
+    bottom: 110%;
+    left: 50%;
+    margin-left: -75px;
+
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
 
 @media(max-width: 800px) {

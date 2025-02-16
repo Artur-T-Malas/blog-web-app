@@ -13,11 +13,14 @@
                         <div class="edit-post-bottom-row">
                             <div class="author-field">
                                 <label for="author">Author</label>
-                                <input type="text" name="author" value="<%= blogPosts[i].author %>" required>
+                                <div class="tooltip">
+                                    <input type="text" name="author" value="<%= blogPosts[i].author %>" required>
+                                    <span class="tooltiptext">Letters, digits and #$%&-_ symbols are allowed. Max length: 20 characters.</span>
+                                </div>
                             </div>
                             <div class="bottom-row-buttons">
                                 <input type="submit" value="Update">
-                                <form action="/posts/update/cancsel" method="POST">
+                                <form action="/posts/update/cancel" method="POST">
                                     <input type="hidden" name="cancel" value="1">
                                     <input type="submit" value="Cancel">
                                 </form>
@@ -56,7 +59,10 @@
         <div class="create-post-bottom-row">
             <div class="author-field">
                 <label for="author">Your Name:</label>
-                <input type="text" name="author" required>
+                <div class="tooltip">
+                    <input type="text" name="author" required>
+                    <span class="tooltiptext">Letters, digits and #$%&-_ symbols are allowed. Max length: 20 characters.</span>
+                </div>
             </div>
             <input type="submit" value="Post">
         </div>
