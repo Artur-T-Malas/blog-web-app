@@ -133,11 +133,6 @@ a {
     align-items: center;
 }
 
-.cancel-button-container {
-    display: flex;
-    justify-content: flex-end;
-}
-
 input[type=submit], input[type=button], button {
     background-color: #EEEEEE;
     color: #053B50;

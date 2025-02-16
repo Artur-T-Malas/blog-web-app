@@ -70,26 +70,27 @@ app.post("/posts/edit", (req, res) => {
 });
 
 app.post("/posts/update", (req, res) => {
-    let authorValid = validateAuthor(req.body.author);
-    if (authorValid) {
-        userPosts[Number(req.body['postId'])] = {
-            author: req.body.author,
-            content: req.body.content
-        };
+    if (req.body.action == 'Cancel') {
         editPost = false;
+        editPostId = null;
         res.redirect("/");
     } else {
-        res.render(
-            "error.ejs",
-            { errorMessage: "Invalid input" }
-        );
+        console.log(req.body);
+        let authorValid = validateAuthor(req.body.author);
+        if (authorValid) {
+            userPosts[Number(req.body['postId'])] = {
+                author: req.body.author,
+                content: req.body.content
+            };
+            editPost = false;
+            res.redirect("/");
+        } else {
+            res.render(
+                "error.ejs",
+                { errorMessage: "Invalid input" }
+            );
+        }
     }
-});
-
-app.post("/posts/update/cancel", (req, res) => {
-    editPost = false;
-    editPostId = null;
-    res.redirect("/");
 });
 
 app.post("/posts/delete", (req, res) => {
