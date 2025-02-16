@@ -20,11 +20,13 @@
                             </div>
                             <div class="bottom-row-buttons">
                                 <input type="submit" value="Update">
-                                <form action="/posts/update/cancel" method="POST">
-                                    <input type="hidden" name="cancel" value="1">
-                                    <input type="submit" value="Cancel">
-                                </form>
                             </div>
+                        </div>
+                    </form>
+                    <form action="/posts/update/cancel" method="POST">
+                        <input type="hidden" name="cancel" value="1">
+                        <div class="cancel-button-container">
+                            <input type="submit" value="Cancel">
                         </div>
                     </form>
                 </div>

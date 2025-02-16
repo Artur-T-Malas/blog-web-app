@@ -133,13 +133,19 @@ a {
     align-items: center;
 }
 
+.cancel-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
 input[type=submit], input[type=button], button {
     background-color: #EEEEEE;
     color: #053B50;
     padding: 0.5rem;
     border-radius: 0.5rem;
-    min-width: 60px;
+    width: 70px;
     font-weight: bold;
+    margin: 0.2rem;
 }
 
 nav > button {
